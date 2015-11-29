@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pix Album</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+</head>
+
+<body ng-app="myapp" >
+<!-- 
+<body ng-app="fileUpload" ng-controller="MyCtrl">
+  <h4>Upload on file select</h4>
+  <button ngf-select="uploadFiles($files, $invalidFiles)" multiple
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+      Select Files</button>
+  <br><br>
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"  
+            ng-bind="f.progress + '%'"></div>
+      </span>
+    </li>
+    <li ng-repeat="f in errFiles" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+    </li> 
+  </ul>
+  {{errorMsg}} -->
+
+
+
+  <div class="row modalDetail" ng-controller='UploadCtrl'>
+    <h3>New Episode</h3>
+    <table class="" ng-model='episode'>
+      <tbody>
+        <tr>
+          <td class="labelField">Name</td>
+          <td><input type='text' ng-model='episode.name'></td>
+        </tr>
+        <tr>
+          <td class="labelField">Title</td>
+          <td><input type='text' ng-model='episode.title'></td>
+        </tr>
+        <tr>
+          <td class="labelField">Description</td>
+          <td><input type='text' ng-model='episode.shortDescription'></td>
+        </tr>
+        <tr>
+          <td class="labelField">Time</td>
+          <td><input type='text' ng-model='episode.time'></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <td class="labelField">Image</td>
+    <span class="btn btn-default btn-file">
+      <input type="file" accept="image/*" capture="camera" id="file-upload">
+    </span>
+    <div class='btn btn-warning' ng-click='createEpisode()'>Create an Episode</div>
+    <br/>
+    <img id="pano" width="100px">
+    <br><br>
+    <button ng-click="getImg()">get image from firebase</button>
+    
+    <!-- <div ng-show="{{loadClicked}}"> -->
+      <p ng-hide="imgList.length > 0">Loading...</p>
+      <img width="300px" ng-show="imgList.length > 0" ng-repeat="img in imgList" ng-src="{{img}}">
+    <!-- </div> -->
+  </div>
+
+
+<!--  <script src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script> -->
+  <script src="app.js"></script>
+</body>
+</html>
+
+<!-- <body>
+  <h1>Pix Album</h1>
+
+  <div ng-controller="MyCtrl">
+    <input type="file" ngf-select="onFileSelect($files)" multiple>
+  </div>
+
+  <input type="text">
+  <button>include</button>
+  
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</body> -->
